@@ -1,0 +1,1 @@
+20220509	18:17:10	599412fd-71f0-400c-9f89-74dc88955ce8	TypeError: statesMatch.funfact is not iterable

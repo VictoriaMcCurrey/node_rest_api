@@ -1,0 +1,8 @@
+20220509	16:23:16	63003693-0ea9-467c-a861-522350211bdb	GET	undefined	/states/in/admission
+20220509	17:15:55	18e59f47-89d1-40ac-919d-d7e61288a05f	GET	undefined	/states/AK
+20220509	18:17:10	4d9c5ec8-4aa0-4df7-8862-ca9dad6eebbf	GET	undefined	/states
+20220509	18:18:59	5a7ef91a-7731-4d13-8c2e-f2982ad4c5f5	GET	undefined	/states
+20220509	18:20:03	6baca933-cdb0-4167-a2cf-e3362c5b75cf	GET	undefined	/states
+20220509	18:20:05	ae9a8eb6-6931-4f3d-bb3f-dad41d05f1df	GET	undefined	/states/?contig=true
+20220509	18:20:08	33f765e5-a7c0-4d23-b451-7b4513b6f596	GET	undefined	/states/?contig=false
+20220509	18:20:11	69db8501-429c-424b-97ae-e7e78bea1fd5	GET	undefined	/states/AK
