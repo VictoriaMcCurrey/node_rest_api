@@ -19,7 +19,11 @@ router.route('/')
 router.route('/:state')
     .get((req, res) => {
         let state = data.states.find((state) => state.code === req.params.state.toUpperCase());
+        if (!state) {
+            return res.status(400).json({ 'message': 'Invalid state abbreviation parameter' });
+        } else {
         res.json(state);
+        }
     });
 
 // /states/:state/funfact A random fun fact for the state URL parameter
@@ -29,7 +33,6 @@ router.route('/:state/funfacts')
         let fact = StatesDB.find({ stateCode: req.params.stateCode.toUpperCase()}).exec();
         res.json(fact);
     })
-router.route('/:state/funfacts')
     .post((req, res) => {
        console.log("here from fun fact post request")
         let result = StatesDB.create({
@@ -43,28 +46,44 @@ router.route('/:state/funfacts')
 router.route('/:state/capital')
     .get((req, res) => {
         let state = data.states.find((state) => state.code === req.params.state.toUpperCase());
-        res.json({ state: `${state.state}`, capital: `${state.capital_city}` });
+        if (!state) {
+            return res.status(400).json({ 'message': 'Invalid state abbreviation parameter' });
+        } else {
+            res.json({ state: `${state.state}`, capital: `${state.capital_city}` });
+        }
     });
 
 // get state and nickname = /states/:state/nickname { ‘state’: stateName, ‘nickname’: nickname }
 router.route('/:state/nickname')
     .get((req, res) => {
         let state = data.states.find((state) => state.code === req.params.state.toUpperCase());
+        if (!state) {
+            return res.status(400).json({ 'message': 'Invalid state abbreviation parameter' });
+        } else {
         res.json({ state: `${state.state}`, nickname: `${state.nickname}` });
+        }
     });
 
 // get state and population = /states/:state/population { ‘state’: stateName, ‘population’: population }
 router.route('/:state/population')
     .get((req, res) => {
         let state = data.states.find((state) => state.code === req.params.state.toUpperCase());
+        if (!state) {
+            return res.status(400).json({ 'message': 'Invalid state abbreviation parameter' });
+        } else {
         res.json({ state: `${state.state}`, population: `${state.population}` });
+        }
     });
 
 // /states/:state/admission { ‘state’: stateName, ‘admitted’: admissionDate }
 router.route('/:state/admission')
     .get((req, res) => {
         let state = data.states.find((state) => state.code === req.params.state.toUpperCase());
-        res.json({ state: `${state.state}`, admission: `${state.admission_date}` });
+        if (!state) {
+            return res.status(400).json({ message: 'Invalid state abbreviation parameter'})
+        } else {
+            res.json({ state: `${state.state}`, admission: `${state.admission_date}` })
+        };
     });
 
 module.exports = router;
