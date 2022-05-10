@@ -87,7 +87,7 @@ router.route('/:state/admission')
         if (!state) {
             return res.status(400).json({ message: 'Invalid state abbreviation parameter'})
         } else {
-            res.json({ state: `${state.state}`, admission: `${state.admission_date}` })
+            res.json({ state: `${state.state}`, admitted: `${state.admission_date}` })
         };
     });
 
