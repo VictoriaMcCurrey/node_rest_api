@@ -34,11 +34,16 @@ router.route('/:state/funfacts')
         res.json(fact);
     })
     .post((req, res) => {
-       console.log("here from fun fact post request")
         let result = StatesDB.create({
             stateCode: req.body.stateCode,
             funfacts: req.body.funfacts
         });
+        res.status(201).json(result);
+    })
+    .put((req, res) => {
+        res.status(201).json(result);
+    })
+    .delete((req, res) => {
         res.status(201).json(result);
     });
 
@@ -82,7 +87,7 @@ router.route('/:state/admission')
         if (!state) {
             return res.status(400).json({ message: 'Invalid state abbreviation parameter'})
         } else {
-            res.json({ state: `${state.state}`, admission_date: `${state.admission_date}`, admission_number: `${state.admission_number}` })
+            res.json({ state: `${state.state}`, admission: `${state.admission_date}` })
         };
     });
 
