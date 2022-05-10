@@ -16,7 +16,7 @@ router.route('/')
         : (req.query.contig === 'false') ? data.states.filter(state => state.code === 'AK' || state.code === 'HI')
         : data.states;
 
-        res.json(data.states);
+        res.json(data.states)
     });
 
 // get single state = /states/:state All data for the state URL parameter
