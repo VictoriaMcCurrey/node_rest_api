@@ -12,11 +12,12 @@ data.states = require('../../model/states.json');
 // get all states = /states/ All state data returned
 router.route('/')
     .get((req, res) => {
-        data.states = (req.query.contig === 'true') ? data.states.filter(state => state.code !== 'AK' && state.code !== 'HI')
-        : (req.query.contig === 'false') ? data.states.filter(state => state.code === 'AK' || state.code === 'HI')
-        : data.states;
+        let jsonStates = data.states
+        jsonStates = (req.query.contig === 'true') ? jsonStates.filter(state => state.code !== 'AK' && state.code !== 'HI')
+        : (req.query.contig === 'false') ? jsonStates = jsonStates.filter(state => state.code === 'AK' || state.code === 'HI')
+        : jsonStates;
 
-        res.json(data.states)
+        res.json(jsonStates)
     });
 
 // get single state = /states/:state All data for the state URL parameter
@@ -93,7 +94,7 @@ router.route('/:state/admission')
         if (!state) {
             return res.status(400).json({ message: 'Invalid state abbreviation parameter'})
         } else {
-            res.json({ state: `${state.state}`, admission: `${state.admission_date}` })
+            res.json({ state: `${state.state}`, admitted: `${state.admission_date}` })
         };
     });
 
