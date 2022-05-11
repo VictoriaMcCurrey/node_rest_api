@@ -5,19 +5,17 @@ const StatesDB = require('../../model/States');
 const data = {};
 data.states = require('../../model/states.json');
 
-// /states/?contig=true All state data for contiguous states (Not AK or HI)
-
-// /states/?contig=false All state data for non-contiguous states (AK, HI)
-
 // get all states = /states/ All state data returned
+// /states/?contig=true All state data for contiguous states (Not AK or HI)
+// /states/?contig=false All state data for non-contiguous states (AK, HI)
 router.route('/')
     .get((req, res) => {
-        let jsonStates = data.states
-        jsonStates = (req.query.contig === 'true') ? jsonStates.filter(state => state.code !== 'AK' && state.code !== 'HI')
-        : (req.query.contig === 'false') ? jsonStates = jsonStates.filter(state => state.code === 'AK' || state.code === 'HI')
-        : jsonStates;
+        let states = data.states
+        states = (req.query.contig === 'true') ? states.filter(state => state.code !== 'AK' && state.code !== 'HI')
+        : (req.query.contig === 'false') ? states = states.filter(state => state.code === 'AK' || state.code === 'HI')
+        : states;
 
-        res.json(jsonStates)
+        res.json(states)
     });
 
 // get single state = /states/:state All data for the state URL parameter
